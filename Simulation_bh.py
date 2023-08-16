@@ -6,7 +6,7 @@ import astropy.constants as const
 from astropy.cosmology import Planck18
 from astropy.cosmology import WMAP9
 
-def Sigma(name, horizontal_axis, vertical_axis, hfov):
+def Sigma(name, horizontal_axis, vertical_axis, bhm_hfov):
     ''' 
     Calculates the Sigma (projected surface mass density) using matter distributions from the BAHAMAS simulations.
     
@@ -24,9 +24,8 @@ def Sigma(name, horizontal_axis, vertical_axis, hfov):
     '''
     
     # parameters
-    h = 0.700
     bins = 1200
-    #hfov = 5*h # "half the fielf of view"
+    h=0.700 # some sort of astronomical factor
     
     # Mapping between axis labels and numerical indices
     axis_mapping = {'x': 0, 'y': 1, 'z': 2}
@@ -54,11 +53,13 @@ def Sigma(name, horizontal_axis, vertical_axis, hfov):
     bh_pos = (data['bh_pos']*h)*u.Mpc
     gas_pos = (data['gas_pos']*h)*u.Mpc
     star_pos = (data['star_pos']*h)*u.Mpc
+    
+    hfov_unitless = bhm_hfov.to_value('Mpc')
 
-    STARS_weighted, xedges_stars, yedges_stars = np.histogram2d(star_pos[:,horizontal_index]-CoP[horizontal_index], star_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov,hfov],[-hfov,hfov]],bins=bins, density=False, weights=star_mass[:])
-    GAS_weighted, xedges_gas, yedges_gas = np.histogram2d(gas_pos[:,horizontal_index]-CoP[horizontal_index], gas_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov,hfov],[-hfov,hfov]],bins=bins, density=False, weights=gas_mass[:])
-    BH_weighted, xedges_bh, yedges_bh = np.histogram2d(bh_pos[:,horizontal_index]-CoP[horizontal_index], bh_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov,hfov],[-hfov,hfov]],bins=bins, density=False, weights=bh_mass[:])
-    DM_weighted, xedges_dm, yedges_dm = np.histogram2d(dm_pos[:,horizontal_index]-CoP[horizontal_index], dm_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov,hfov],[-hfov,hfov]],bins=bins, density=False, weights=dm_mass[:])
+    STARS_weighted, xedges_stars, yedges_stars = np.histogram2d(star_pos[:,horizontal_index]-CoP[horizontal_index], star_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov_unitless,hfov_unitless],[-hfov_unitless,hfov_unitless]],bins=bins, density=False, weights=star_mass[:])
+    GAS_weighted, xedges_gas, yedges_gas = np.histogram2d(gas_pos[:,horizontal_index]-CoP[horizontal_index], gas_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov_unitless,hfov_unitless],[-hfov_unitless,hfov_unitless]],bins=bins, density=False, weights=gas_mass[:])
+    BH_weighted, xedges_bh, yedges_bh = np.histogram2d(bh_pos[:,horizontal_index]-CoP[horizontal_index], bh_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov_unitless,hfov_unitless],[-hfov_unitless,hfov_unitless]],bins=bins, density=False, weights=bh_mass[:])
+    DM_weighted, xedges_dm, yedges_dm = np.histogram2d(dm_pos[:,horizontal_index]-CoP[horizontal_index], dm_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov_unitless,hfov_unitless],[-hfov_unitless,hfov_unitless]],bins=bins, density=False, weights=dm_mass[:])
 
     bin_area = (xedges_stars[1] - xedges_stars[0])**2
 
