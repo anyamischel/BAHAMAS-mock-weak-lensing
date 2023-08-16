@@ -160,9 +160,9 @@ def convergence(Sigma, Sigma_crit):
     return (Sigma/Sigma_crit).to_value('')
 
 def shear(convergence, padding=1):
-    n = len(convergence())
-    edgex = len(convergence())
-    edgey = len(convergence())[0]
+    n = len(convergence)
+    edgex = len(convergence)
+    edgey = len(convergence[0])
     
     convergence_ft = fft2(convergence, s = [n*padding, n*padding])
     
