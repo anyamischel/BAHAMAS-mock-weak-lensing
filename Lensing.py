@@ -136,20 +136,36 @@ def SIS_deflection_angle(lens_center_x, lens_center_y, ee_r, theta_x, theta_y):
     xi_x = theta_x - lens_center_x
     xi_y = theta_y - lens_center_y
     
+    # calculating the components of the deflection angle field
     alpha_x = ee_r*xi_x/np.sqrt(xi_x**2 + xi_y**2)
     alpha_y = ee_r*xi_y/np.sqrt(xi_x**2 + xi_y**2)
     
     return [alpha_x, alpha_y]
-    
-    
-    # earlier in the code im gonna have a calculation for ee_r given sigma v or like sigma crit or something
-
-    # i think maybe I should switch over to using beta and theta for the transformed evalutaion location (x_tf, y_tf)
-    # use the formula beta = theta - alpha
-
 
 def ee_r(sigma_v, dL, dS):
-    return ((4*np.pi*sigma_v**2/const.c**2 * dL/dS).to_value(''))*u.rad
+    '''
+    Calculates the Einstein ring radius
+    
+    Paramters
+    ---------
+    sigma_v : float
+        the velocity dispersion, around 1400 km/s for a standard galaxy
+    
+    dL : float
+        the distance from the viewer to the lens
+    
+    dS : float
+        the distance from the viewer to the source
+    
+    Returns
+    -------
+    ee_r : float
+        the einstein ring radius
+    
+    '''
+    
+    ee_r = ((4*np.pi*sigma_v**2/const.c**2 * dL/dS).to_value(''))*u.rad
+    return ee_r
 
 def Sigma_crit(dS, dLS, dL):
     return const.c**2/(4*np.pi*const.G) * dS/(dL*dLS)

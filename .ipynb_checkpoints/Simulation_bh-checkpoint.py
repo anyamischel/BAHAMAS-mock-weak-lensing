@@ -1,5 +1,3 @@
-# testing this new Simulation2.py!!!
-
 import numpy as np
 import astropy.units as u
 import astropy.constants as const
@@ -20,6 +18,14 @@ def Sigma(name, horizontal_axis, vertical_axis, bhm_hfov):
     
     vertical_axis : str
         'x', 'y', or 'z'. Vertical axis coordinate
+        
+    bhm_hfov : int, float
+        half of the field-of-view of the BAHAMAS simulation
+    
+    Returns
+    -------
+    Sigma : 2D array
+       the mass density projected onto the inputted horizontal and vertical axes
     
     '''
     
@@ -47,6 +53,7 @@ def Sigma(name, horizontal_axis, vertical_axis, bhm_hfov):
     gas_mass = data['gas_mass']*u.solMass
     star_mass = data['star_mass']*u.solMass
 
+    # account for the fact that the BAHAMAS files were intitially loaded in units of 1/h
     CoP = (data['CoP']*h)*u.Mpc
 
     dm_pos = (data['dm_pos']*h)*u.Mpc
@@ -56,6 +63,7 @@ def Sigma(name, horizontal_axis, vertical_axis, bhm_hfov):
     
     hfov_unitless = bhm_hfov.to_value('Mpc')
 
+    # generate 2D histograms of positions with masses for the weights
     STARS_weighted, xedges_stars, yedges_stars = np.histogram2d(star_pos[:,horizontal_index]-CoP[horizontal_index], star_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov_unitless,hfov_unitless],[-hfov_unitless,hfov_unitless]],bins=bins, density=False, weights=star_mass[:])
     GAS_weighted, xedges_gas, yedges_gas = np.histogram2d(gas_pos[:,horizontal_index]-CoP[horizontal_index], gas_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov_unitless,hfov_unitless],[-hfov_unitless,hfov_unitless]],bins=bins, density=False, weights=gas_mass[:])
     BH_weighted, xedges_bh, yedges_bh = np.histogram2d(bh_pos[:,horizontal_index]-CoP[horizontal_index], bh_pos[:,vertical_index]-CoP[vertical_index],range=[[-hfov_unitless,hfov_unitless],[-hfov_unitless,hfov_unitless]],bins=bins, density=False, weights=bh_mass[:])
