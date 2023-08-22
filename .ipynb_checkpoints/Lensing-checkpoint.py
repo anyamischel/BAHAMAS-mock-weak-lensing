@@ -168,18 +168,73 @@ def ee_r(sigma_v, dL, dS):
     return ee_r
 
 def Sigma_crit(dS, dLS, dL):
-    return const.c**2/(4*np.pi*const.G) * dS/(dL*dLS)
+    '''
+    Calculates Sigma crit, which is a constant for which >1 indicates strong lensing
+    
+    Parameters
+    ----------
+    dS : float
+        distance from the viewer to the source
+        
+    dLS : float
+        distance from the lens to the source
+        
+    dL : float
+        distance from the viewer to the lens
+        
+    Returns
+    Sigma_crit : float
+        
+    '''
+    Sigma_crit = const.c**2/(4*np.pi*const.G) * dS/(dL*dLS)
+    return Sigma_crit
 
 
 # Weak lensing
 def convergence(Sigma, Sigma_crit):
+    '''
+    Calculates the convergence (Kappa)
+    
+    Parameters
+    ----------
+    Sigma : 2D array
+        projected mass density
+    
+    Sigma_crit : float
+        
+    '''
     return (Sigma/Sigma_crit).to_value('')
 
 def shear(convergence, padding=1):
+    '''
+    Calculates the shear given convergence using FFT and IFFT
+    
+    Parameters
+    ----------
+    convergence : 2D array
+        the convergence (kappa)
+        
+    padding : float
+        indicates how much zero padding to include when computing the fourier transform
+    
+    Returns
+    -------
+    shear1 : 2D array
+        the first component of the shear, indicating diagonal stretching/squishing
+    
+    shear2 : 2D array
+        the second component of the shear, indicating vertical/horizontal stretching/squishing
+    
+    shear : 2D array
+        the magnitude of the shear
+        
+    '''
+    
     n = len(convergence)
     edgex = len(convergence)
     edgey = len(convergence[0])
     
+    # evaluate the 2D FFT on the convergence
     convergence_ft = fft2(convergence, s = [n*padding, n*padding])
     
     kx = fftfreq(n*padding, 2*edgex/(n*padding))
@@ -190,25 +245,49 @@ def shear(convergence, padding=1):
     kx[0, 0] = 1
     ky[0, 0] = 1
 
+    # solving for the components of the fourier transorm of the shear 
     shear1_ft = (kx**2 - ky**2)/(kx**2 + ky**2) * convergence_ft
     shear2_ft = (2*kx*ky)/(kx**2 + ky**2) * convergence_ft
 
+    # setting the origin point of the shears to be 0 to avoid errors
     shear1_ft[0, 0] = 0
     shear2_ft[0, 0] = 0
     
+    # performing the inverse fourier transform to get the components of the shear
     shear1 = (np.real(ifft2(shear1_ft)))[:n, :n]
     shear2 = (np.real(ifft2(shear2_ft)))[:n, :n]
+    shear = np.sqrt(shear1**2 + shear2**2)
     
-    return shear1, shear2, np.sqrt(shear1**2 + shear2**2)
+    return shear1, shear2, shear
 
 def draw_shearlines(center_x, center_y, shear1, shear2, a, ax, length, color='white'):
+    '''
+    Draw lines indicating the direction of the stretching of background sources due to the shear on a plot
+    
+    Parameters
+    ----------
+    center_x : 2D array
+        the x-coordinate of the center point of these lines
+    
+    center_y : 2D array
+        the y-coordinate of the center point of these lines
+    
+    shear1 : 2D array
+        the fist component of the shear
+    
+    shear2 : 2D array
+        the second component of the shear
+    
+    a : int
+        an "inverse density" that controls the quantity of shear lines. the function plots a shear line at every ath element of the center point array
+        
+    '''
     
     center_samp_x = center_x[::a, ::a].flatten()
     center_samp_y = center_y[::a, ::a].flatten()
-    # length = (((shear[::a, ::a])*b).flatten())*u.arcmin
+
     angle = (0.5*np.arctan2((shear2[::a, ::a]).flatten(), (shear1[::a, ::a]).flatten()))*u.rad
 
-    
     # Calculate the starting and ending points of the lines
     start_x = center_samp_x - 0.5 * length * np.cos(angle)
     start_y = center_samp_y - 0.5 * length * np.sin(angle)
