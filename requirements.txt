@@ -1,0 +1,8 @@
+Required packages:
+numpy
+scipy.fft
+scipy.interpolate
+matplotlib.pyplot
+astropy.units
+astropy.constants
+astropy.cosmology
