@@ -1,3 +1,5 @@
+Plan for the README
+
 # weak-lensing-mock-generation
 Takes cosmic simulations from the BAHAMAS project and evaluates the shear at any given point.
 
