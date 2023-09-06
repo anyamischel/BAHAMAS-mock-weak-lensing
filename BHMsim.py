@@ -14,7 +14,7 @@ class BHM_cluster:
         
         self.name = name
         self.cosmo = cosmo # Version used for astropy
-        self.BHMpath = BHMpath # path where repository has been saved
+        self.BHMpath = BHMpath # path of the saved BAHAMAS-mock-weak-lensing repository
         
         # Chosen axes for the BAHAMAS simualtion to look at
         self.horizontal_axis = horizontal_axis
