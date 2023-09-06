@@ -4,7 +4,7 @@ import astropy.constants as const
 from astropy.cosmology import Planck18
 from astropy.cosmology import WMAP9
 
-def Sigma(name, horizontal_axis, vertical_axis, bhm_hfov):
+def Sigma(name, BHMpath, horizontal_axis, vertical_axis, bhm_hfov):
     ''' 
     Calculates the Sigma (projected surface mass density) using matter distributions from the BAHAMAS simulations.
     
@@ -46,7 +46,8 @@ def Sigma(name, horizontal_axis, vertical_axis, bhm_hfov):
 
     
     # Load the BAHAMAS cluster
-    data = np.load("/Users/amischel/Downloads/BAHAMAS_cutouts/CDMb/" + name)
+    # data = np.load("/Users/amischel/Downloads/BAHAMAS_cutouts" + name)
+    data = np.load(BHMpath + '/BAHAMAS_cutouts/' + name)
 
     dm_mass = (data['dm_mass'])*u.solMass
     bh_mass = data['bh_mass']*u.solMass

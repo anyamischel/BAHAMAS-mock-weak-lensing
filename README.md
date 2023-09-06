@@ -1,9 +1,8 @@
 # weak-lensing-mock-generation
 
-Calculating Shear from BAHAMAS Simulations for Mock Weak Gravitational Lensing Image Generation
+## Calculating Shear from BAHAMAS Simulations for Mock Weak Gravitational Lensing Image Generation
 
-Description:
-
+### Project Description:
 
 
 

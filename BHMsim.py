@@ -10,10 +10,11 @@ from scipy import interpolate
 from scipy.interpolate import RectBivariateSpline
 
 class BHM_cluster:
-    def __init__(self, name, horizontal_axis, vertical_axis, zlens, bhm_hfov=10*u.Mpc, cosmo=Planck18):
+    def __init__(self, name, BHMpath, horizontal_axis, vertical_axis, zlens, bhm_hfov=10*u.Mpc, cosmo=Planck18):
         
         self.name = name
         self.cosmo = cosmo # Version used for astropy
+        self.BHMpath = BHMpath # path where repository has been saved
         
         # Chosen axes for the BAHAMAS simualtion to look at
         self.horizontal_axis = horizontal_axis
@@ -81,7 +82,7 @@ class BHM_cluster:
         '''
         
         # calculating Sigma
-        Sigma = s.Sigma(self.name, self.horizontal_axis, self.vertical_axis, self.bhm_hfov)
+        Sigma = s.Sigma(self.name, self.BHMpath, self.horizontal_axis, self.vertical_axis, self.bhm_hfov)
         
         # default redshift
         Sigma_crit0 = self.calculate_Sigma_crit(self.zsource0, self.zlens0)
