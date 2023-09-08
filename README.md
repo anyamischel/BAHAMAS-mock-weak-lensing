@@ -5,6 +5,9 @@
 ## Project Description
 This repository loads pre-run BAHAMAS Simulations, which are large-scale N-body simulations of the universe's baryonic and dark matter content, and evaluates and plots the convergence, shear, and magnification fields.
 
+- Anya Mischel
+- Contact: amischel@caltech.edu
+
 ## Installation
 Git clone the repository and ensure that the user's local machine has all the python packages listed in requirements.txt.
 
