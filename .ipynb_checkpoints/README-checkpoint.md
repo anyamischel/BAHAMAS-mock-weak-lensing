@@ -55,21 +55,20 @@ This is a text file containing a list of all the python packages needed in order
 
 The main functions used for this project within Lensing.py are:
 
-`Sigma_crit` - calculates the critical surface density, $\Sigma_{\mathrm{crit}}$.
+- `Sigma_crit` - calculates the critical surface density, $\Sigma_{\mathrm{crit}}$.
 
-`convergence` - takes in a Sigma, and Sigma crit, and calculates the convergence $\kappa$.
+- `convergence` - takes in a Sigma, and Sigma crit, and calculates the convergence $\kappa$.
 
-`shear` - uses 2D discrete fourier transforms to convert from the convergence to the shear. This fourier relationship is derived in Report.pdf.
+- `shear` - uses 2D discrete fourier transforms to convert from the convergence to the shear. This fourier relationship is derived in Report.pdf.
 
-`draw_shearlines` - draws lines representing the direction that background sources would be stretched that can be placed on top of an image of the shear plot.
-
-
-
-`Simulation.py`
-
-`Sigma` - calculates the projected surface density of a BAHAMAS simulation by projecting all the particles onto one coordinate plane and making a 2D histogram to turn the particle's weighted positions into a 2D array.
+- `draw_shearlines` - draws lines representing the direction that background sources would be stretched that can be placed on top of an image of the shear plot.
 
 
+
+
+### Simulation.py
+
+- `Sigma` - calculates the projected surface density of a BAHAMAS simulation by projecting all the particles onto one coordinate plane and making a 2D histogram to turn the particle's weighted positions into a 2D array.
 
 
 
