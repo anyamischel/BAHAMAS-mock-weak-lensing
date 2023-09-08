@@ -14,6 +14,7 @@ Lensing.py
 Simulation.py
 BHMSim.py
 Running_BHM_Sims.py
+Report.pdf
 requirements.txt
 
 
@@ -35,6 +36,22 @@ This is a python file containing a multitude of functions related to lensing cal
 Simulation.py
 -------------
 This is a python file containing a function related to loading and analyzing the BAHAMAS simulations. This function, called Sigma, calculates the projected mass density of one of the BAHAMAS simulations by putting all of the particles from a given simulation into a 2D histogram along a chosen coordinate axis (XY, YZ, XZ).
+
+BHMsim.py
+---------
+This is a python file containing the class BHMsim, which is a class for loading the pre-run BAHAMAS simulations and calculating and plotting the convergence, shear, and magnification fields. A more detailed description of each function is listed in section ENTER LATER BECAUSE I DONT KNOW WHAT SECTION YET!!!!!!!!!!!!!!
+
+Running_BHM_Sims.py
+-------------------
+This is a python file with an example of how to instantiate an object of BHMsim and plot its convergence and shear. More details will be included in the 'Running the Project' section.
+
+Report.pdf
+----------
+This is a full report of the project, including the motivation for the project, an explanation of lensing theory, a derivation of the main equations used to calculate the shear from the convergence, and an overview of limitation and future improvements for the project.
+
+requirements.txt
+----------------
+This is a text file containing a list of all the python packages needed in order to run the project.
 
 
 ### Running the Project
