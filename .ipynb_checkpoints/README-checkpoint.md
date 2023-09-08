@@ -10,12 +10,12 @@ Git clone the repository and ensure that your local machine has all the python p
 
 ## File Overview & Description
 This repository consists of the following main files:
-`Lensing.py`
-`Simulation.py`
-`BHMSim.py`
-`Running_BHM_Sims.py`
-`Report.pdf`
-`requirements.txt`
+- `Lensing.py`
+- `Simulation.py`
+- `BHMSim.py`
+- `Running_BHM_Sims.py`
+- `Report.pdf`
+- `requirements.txt`
 
 
 Along with a couple jupyter notebook versions (.ipynb) of these files:
@@ -29,22 +29,22 @@ BAHAMAS_cutouts
 
 Below are descriptions for the function and contents of each of these files:
 
-###### Lensing.py
+`Lensing.py`
 This is a python file containing a multitude of functions related to lensing calculations. This includes functions related to both strong lensing and weak lensing, though the only functions used in this project are weak lensing functions. The strong lensing functions calculate quantities like the Einstein ring radius, deflection angle field, etc., while the weak lensing functions calculate quantities such as $\Sigma_{\mathrm{crit}}$, the convergence, and the shear.
 
-###### Simulation.py
+`Simulation.py`
 This is a python file containing a function which processes and analyzes the pre-loaded BAHAMAS simulations.
 
-###### BHMsim.py
+`BHMsim.py`
 This is a python file containing the class BHMsim, which is a class for loading the pre-run BAHAMAS simulations and calculating and plotting the convergence, shear, and magnification fields.
 
-###### Running_BHM_Sims.py
+`Running_BHM_Sims.py`
 This is a python file with an example of how to instantiate an object of BHMsim and plot its convergence and shear. More details will be included in the 'Running the Project' section.
 
-###### Report.pdf
+`Report.pdf`
 This is a full report of the project, including the motivation for the project, an explanation of lensing theory, a derivation of the main equations used to calculate the shear from the convergence, and an overview of limitation and future improvements for the project.
 
-###### requirements.txt
+`requirements.txt`
 This is a text file containing a list of all the python packages needed in order to run the project.
 
 ---
