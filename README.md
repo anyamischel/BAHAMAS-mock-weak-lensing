@@ -29,7 +29,7 @@ BAHAMAS_cutouts
 
 Below are descriptions for the function and contents of each of these files:
 
-`Lensing.py`
+`Lensing.py`  
 This is a python file containing a multitude of functions related to lensing calculations. This includes functions related to both strong lensing and weak lensing, though the only functions used in this project are weak lensing functions. The strong lensing functions calculate quantities like the Einstein ring radius, deflection angle field, etc., while the weak lensing functions calculate quantities such as $\Sigma_{\mathrm{crit}}$, the convergence, and the shear.
 
 `Simulation.py`
