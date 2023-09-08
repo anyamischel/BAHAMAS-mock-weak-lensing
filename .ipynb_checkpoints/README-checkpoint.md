@@ -70,6 +70,8 @@ The main functions used for this project within Lensing.py are:
 `Sigma` - calculates the projected surface density of a BAHAMAS simulation by projecting all the particles onto one coordinate plane and making a 2D histogram to turn the particle's weighted positions into a 2D array.
 
 
+
+
 ### BHMsim.py
 
 `calculate_Sigma_crit` - calls the Sigma_crit function from Lensing.py and inputs the redshift parameters used to instantiate the BAHAMAS object.
