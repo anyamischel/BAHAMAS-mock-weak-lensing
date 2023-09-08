@@ -60,7 +60,7 @@ The main functions used for this project within Lensing.py are:
 
 - `Sigma_crit` - calculates the critical surface density, $\Sigma_{\mathrm{crit}}$.
 
-- `convergence` - takes in a Sigma, and Sigma crit, and calculates the convergence $\kappa$.
+- `convergence` - takes in a Sigma, and $\Sigma_{\mathrm{crit}}$, and calculates the convergence $\kappa$.
 
 - `shear` - uses 2D discrete fourier transforms to convert from the convergence to the shear. This fourier relationship is derived in Report.pdf.
 
@@ -71,22 +71,22 @@ The main functions used for this project within Lensing.py are:
 
 ### Simulation.py
 
-- `Sigma` - calculates the projected surface density of a BAHAMAS simulation by projecting all the particles onto one coordinate plane and making a 2D histogram to turn the particle's weighted positions into a 2D array.
+- `Sigma` - calculates the projected surface density of a BAHAMAS simulation by projecting all the particles onto one coordinate plane and making a 2D histogram to turn the particle's weighted positions into a 2D projected surface density array.
 
 
 
 
 ### BHMsim.py
 
-- `calculate_Sigma_crit` - calls the Sigma_crit function from Lensing.py and inputs the redshift parameters used to instantiate the BAHAMAS object.
+- `calculate_Sigma_crit` - calls `Sigma_crit` from Lensing.py and inputs the redshift parameters used to instantiate the BHMsim object.
 
-- `calculate_convergence0_map` - calls the Sigma function from Lensing.py and its own calculate_Sigma_crit function to calculate a 2D array of the convergence using default redshifts and stores it. This way, the convergence does not have to be re-calculated every time a new lens or source redshift is chosen.
+- `calculate_convergence0_map` - calls `Sigma` from Lensing.py and its own `calculate_Sigma_crit` to calculate a 2D array of the convergence using default redshifts and stores it. This way, the convergence does not have to be re-calculated every time a new lens or source redshift is chosen.
 
-- `get_convergence0_map` - checks if the convergence0 is already saved and if not, calculates it
+- `get_convergence0_map` - checks if the convergence0 is already saved and if not, calculates it.
 
-- `calculate_shear0_map` - calls shear from Lensing.py and its own saved convergence to calculate the shear components and magnitude.
+- `calculate_shear0_map` - calls `shear` from Lensing.py and its own saved convergence to calculate the shear components and magnitude.
 
-- `get_shear0_map` - checks if the shear is already saved and if not, calculates it
+- `get_shear0_map` - checks if the shear is already saved and if not, calculates it.
 
 - `evaluate_convergence` - scales the saved convergence by a $\Sigma_{\mathrm{crit}}$ factor to reflect the correct inputted redshifts and then uses linear intepolation to find the convergence at any point.
 
@@ -105,7 +105,7 @@ The main functions used for this project within Lensing.py are:
 
 
 ## Running the Project
-In order to run the project, an example file named `Running_BHM_Sims` was included. This file inputs BAHAMAS simulations from the `BAHAMAS_cutouts` directory and first instantiates a BHMsim object of the first simualtion and plots its magnification. Then, it instantiates a BHMsim object for each simulation and plots the convergence and shear for all 20 simulations. To run this script, the path `dirpath` needs to be changed to the path of the cloned repository on the user's local device.
+In order to run the project, an example file named `Running_BHM_Sims.py` was included. This file inputs BAHAMAS simulations from the `BAHAMAS_cutouts` directory and first instantiates a BHMsim object from the first simualtion in `BAHAMAS_cutouts` and plots its magnification. Then, it instantiates a BHMsim object for each simulation and plots the convergence and shear for all 20 simulations. To run this script, the path `dirpath` needs to be changed to match the path of the cloned repository on the user's local device.
 
 ---
 
