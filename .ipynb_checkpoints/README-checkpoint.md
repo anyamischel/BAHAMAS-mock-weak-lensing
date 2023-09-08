@@ -1,6 +1,6 @@
 # BAHAMAS-mock-weak-lensing
 
-Calculating Shear from BAHAMAS Simulations for Mock Weak Gravitational Lensing Image Generation
+**Calculating Shear from BAHAMAS Simulations for Mock Weak Gravitational Lensing Image Generation**
 
 ## Project Description
 This repository loads pre-run BAHAMAS Simulations, which are large-scale N-body simulations of the universe's baryonic and dark matter content, and evaluates and plots the convergence, shear, and magnification fields.
