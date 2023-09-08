@@ -1,8 +1,8 @@
-# weak-lensing-mock-generation
+# BAHAMAS-mock-weak-lensing
 
 ## Calculating Shear from BAHAMAS Simulations for Mock Weak Gravitational Lensing Image Generation
 
-## Project Description:
+## Project Description
 This repository loads pre-run BAHAMAS Simulations, which are large-scale N-body simulations of the universe's baryonic and dark matter content, and evaluates and plots the convergence, shear, and magnification fields.
 
 ## Installation
@@ -18,12 +18,13 @@ This repository consists of the following main files:
 - `requirements.txt`
 
 
-Along with a couple jupyter notebook versions (.ipynb) of these files:
-BHMSim_nb.ipynb
-Running_BHM_Sims_nb.ipynb
+Along with a couple jupyter notebook versions (.ipynb) which are exact copies of the .py versions of these files:
+- `BHMSim_nb.ipynb`
+- `Running_BHM_Sims_nb.ipynb`
+
 
 As well as a directory of the pre-run BAHAMAS Simulations:
-BAHAMAS_cutouts
+- `BAHAMAS_cutouts`
 
 ---
 
