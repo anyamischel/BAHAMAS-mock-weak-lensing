@@ -49,7 +49,7 @@ This is a full report of the project, including the motivation for the project, 
 This is a text file containing a list of all the python packages needed in order to run the project.
 
 ---
-## Important functions
+## Important Functions
 
 ### Lensing.py
 
@@ -68,6 +68,8 @@ The main functions used for this project within Lensing.py are:
 `Simulation.py`
 
 `Sigma` - calculates the projected surface density of a BAHAMAS simulation by projecting all the particles onto one coordinate plane and making a 2D histogram to turn the particle's weighted positions into a 2D array.
+
+
 
 
 
@@ -96,6 +98,8 @@ The main functions used for this project within Lensing.py are:
 
 `plot_magnification0` - plots the log base 10 of the magnification.
 
+
+---
 
 
 
