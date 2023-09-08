@@ -51,46 +51,48 @@ This is a text file containing a list of all the python packages needed in order
 ---
 ## Important functions
 
-###### Lensing.py
+`Lensing.py`
+
 The main functions used for this project within Lensing.py are:
 
-Sigma_crit - calculates the critical surface density, $\Sigma_{\mathrm{crit}}$.
+`Sigma_crit` - calculates the critical surface density, $\Sigma_{\mathrm{crit}}$.
 
-convergence - takes in a Sigma, and Sigma crit, and calculates the convergence $\kappa$.
+`convergence` - takes in a Sigma, and Sigma crit, and calculates the convergence $\kappa$.
 
-shear - uses 2D discrete fourier transforms to convert from the convergence to the shear. This fourier relationship is derived in Report.pdf.
+`shear` - uses 2D discrete fourier transforms to convert from the convergence to the shear. This fourier relationship is derived in Report.pdf.
 
-draw_shearlines - draws lines representing the direction that background sources would be stretched that can be placed on top of an image of the shear plot.
-
-
-
-###### Simulation.py
-
-Sigma - calculates the projected surface density of a BAHAMAS simulation by projecting all the particles onto one coordinate plane and making a 2D histogram to turn the particle's weighted positions into a 2D array.
+`draw_shearlines` - draws lines representing the direction that background sources would be stretched that can be placed on top of an image of the shear plot.
 
 
-###### BHMsim.py
-calculate_Sigma_crit - calls the Sigma_crit function from Lensing.py and inputs the redshift parameters used to instantiate the BAHAMAS object.
 
-calculate_convergence0_map - calls the Sigma function from Lensing.py and its own calculate_Sigma_crit function to calculate a 2D array of the convergence using default redshifts and stores it. This way, the convergence does not have to be re-calculated every time a new lens or source redshift is chosen.
+`Simulation.py`
 
-get_convergence0_map - checks if the convergence0 is already saved and if not, calculates it
+`Sigma` - calculates the projected surface density of a BAHAMAS simulation by projecting all the particles onto one coordinate plane and making a 2D histogram to turn the particle's weighted positions into a 2D array.
 
-calculate_shear0_map - calls shear from Lensing.py and its own saved convergence to calculate the shear components and magnitude.
 
-get_shear0_map - checks if the shear is already saved and if not, calculates it
+`BHMsim.py`
 
-evaluate_convergence - scales the saved convergence by a $\Sigma_{\mathrm{crit}}$ factor to reflect the correct inputted redshifts and then uses linear intepolation to find the convergence at any point.
+`calculate_Sigma_crit` - calls the Sigma_crit function from Lensing.py and inputs the redshift parameters used to instantiate the BAHAMAS object.
 
-evaluate_shear - scales the saved shear by a $\Sigma_{\mathrm{crit}}$ factor to reflect the correct inputted redshifts and then uses linear intepolation to find the shear at any point.
+`calculate_convergence0_map` - calls the Sigma function from Lensing.py and its own calculate_Sigma_crit function to calculate a 2D array of the convergence using default redshifts and stores it. This way, the convergence does not have to be re-calculated every time a new lens or source redshift is chosen.
 
-plot_convergence0 - plots the log base 10 of the convergence0 map (plotting the true convergence would only be a difference of scaling the colormap, which will not change the shape or characteristics of the image).
+`get_convergence0_map` - checks if the convergence0 is already saved and if not, calculates it
 
-plot_shear0 - plots the log base 10 of the shear0 map (magnitude of the shear vector). Includes the option to plot the shearlines, which represent the direction background sources would be stretched.
+`calculate_shear0_map` - calls shear from Lensing.py and its own saved convergence to calculate the shear components and magnitude.
 
-plot_convergence0_and_shear0 - plots both the log base 10 of the convergence and shear side by side using separate color maps.
+`get_shear0_map` - checks if the shear is already saved and if not, calculates it
 
-plot_magnification0 - plots the log base 10 of the magnification.
+`evaluate_convergence` - scales the saved convergence by a $\Sigma_{\mathrm{crit}}$ factor to reflect the correct inputted redshifts and then uses linear intepolation to find the convergence at any point.
+
+`evaluate_shear` - scales the saved shear by a $\Sigma_{\mathrm{crit}}$ factor to reflect the correct inputted redshifts and then uses linear intepolation to find the shear at any point.
+
+`plot_convergence0` - plots the log base 10 of the convergence0 map (plotting the true convergence would only be a difference of scaling the colormap, which will not change the shape or characteristics of the image).
+
+`plot_shear0` - plots the log base 10 of the shear0 map (magnitude of the shear vector). Includes the option to plot the shearlines, which represent the direction background sources would be stretched.
+
+`plot_convergence0_and_shear0` - plots both the log base 10 of the convergence and shear side by side using separate color maps.
+
+`plot_magnification0` - plots the log base 10 of the magnification.
 
 
 
