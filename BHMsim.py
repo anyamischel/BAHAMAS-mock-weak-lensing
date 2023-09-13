@@ -300,7 +300,7 @@ class BHM_cluster:
             fig, ax = plt.subplots()
             ax.set_xlabel(self.horizontal_axis + '-coord (arcmin)')
             ax.set_ylabel(self.vertical_axis + '-coord (arcmin)')
-            ax.set_title('Convergence$_0$')
+            ax.set_title('Convergence ($\kappa_0$)')
             
         # Since BAHAMAS simulations are performed independent of the distance to the clusters, the scales are in Mpc
         # To convert to an extent which is dependent on the distance to the lens (as used by SuperBIT), the scale will instead be in arcmin
@@ -351,7 +351,7 @@ class BHM_cluster:
             fig, ax = plt.subplots()
             ax.set_xlabel(self.horizontal_axis + '-coord (arcmin)')
             ax.set_ylabel(self.vertical_axis + '-coord (arcmin)')
-            ax.set_title('Shear$_0$')
+            ax.set_title('Shear ($\gamma_0$)')
             
         # Since BAHAMAS simulations are performed independent of the distance to the clusters, the scales are in Mpc
         # To convert to an extent which is dependent on the distance to the lens (as used by SuperBIT), the scale will instead be in arcmin
@@ -421,8 +421,8 @@ class BHM_cluster:
         self.plot_shear0(fig=fig, ax=ax2, hfov_hor=hfov_hor, hfov_ver = hfov_ver, shearlines=shearlines, shearlines_count=shearlines_count, **shear0_kwargs)
 
         # set corresponding title and axis labels
-        ax1.set_title('Convergence$_0$ ($\kappa$)')
-        ax2.set_title('Shear$_0$ ($\gamma$)')
+        ax1.set_title('Convergence ($\kappa_0$)')
+        ax2.set_title('Shear ($\gamma_0$)')
         ax1.set_xlabel(self.horizontal_axis + '-coord (arcmin)')
         ax2.set_xlabel(self.horizontal_axis + '-coord (arcmin)')
         
@@ -460,7 +460,7 @@ class BHM_cluster:
             fig, ax = plt.subplots()
             ax.set_xlabel(self.horizontal_axis + '-coord (arcmin)')
             ax.set_ylabel(self.vertical_axis + '-coord (arcmin)')
-            ax.set_title('Magnification$_0$')
+            ax.set_title('Magnification ($\mu_0)$')
         
         # checks to make sure if convergence0 and shear0 are already calculated and if not, calculate and save them
         if self.convergence0 is None:
